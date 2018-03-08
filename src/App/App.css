@@ -5,6 +5,13 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
-.App {
+.App {}
 
+.headerRow {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.getStartedRow {
+  text-align: center;
 }

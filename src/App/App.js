@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
+import {
+  PageHeader,
+  Grid,
+  Row,
+  Col,
+  Button,
+} from 'react-bootstrap';
+import { withRouter } from 'react-router';
 import getWeb3 from '../utils/getWeb3';
+import NavBar from './NavBar/NavBar';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { web3: null };
+    this.renderBrowse = this.renderBrowse.bind(this);
+  }
+
+  renderBrowse() {
+    this.props.history.push('/browse');
   }
 
   componentWillMount() {
@@ -22,10 +36,30 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Crypto Cars</h1>
+        <NavBar />
+        <Grid container-fluid>
+          <Row className="headerRow">
+            <Col xs={12} md={6} mdOffset={3}>
+              <PageHeader>
+                Welcome To Crypto Cars!
+              </PageHeader>
+            </Col>
+          </Row>
+          <Row className="getStartedRow">
+            <Col xs={12} md={6} mdOffset={3}>
+              <Button
+                bsStyle="primary"
+                bsSize="large"
+                onClick={this.renderBrowse}
+              >
+                Start Collecting!
+              </Button>
+            </Col>
+          </Row>
+        </Grid>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
